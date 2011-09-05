@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>http://stackoverflow.com/questions/6392317/jqgride-data-is-not-loading-with-json-server-response</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/redmond/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.ok-soft-gmbh.com/jqGrid/jquery.jqGrid-4.0.0/css/ui.jqgrid.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://www.ok-soft-gmbh.com/jqGrid/jquery.jqGrid-4.0.0/js/i18n/grid.locale-en.js"></script>
+    <script type="text/javascript">
+        $.jgrid.no_legacy_api = true;
+        $.jgrid.useJSON = true;
+    </script>
+    <script type="text/javascript" src="http://www.ok-soft-gmbh.com/jqGrid/jquery.jqGrid-4.0.0/js/jquery.jqGrid.min.js"></script>
+    <style type="text/css">
+        testClass { color: red !important }
+    </style>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        $(document).ready(function() {
+            'use strict';
+            $("#list").jqGrid({
+                url: 'http://www.ok-soft-gmbh.com/jqGrid/mathi.json', //url: 'execute.jsp?command=command',
+                //mtype:'POST',
+                datatype:"json",
+                colModel : [
+                     {name:'amount', width:70, align:'center'},
+                     {name:'age', width:40, sortable:false, align:'center'},
+                     {name:'name', width:180},
+                     {name:'total', width:380}
+                ],
+                jsonReader : {
+                    root: "key",
+                    page: "currentpage",
+                    total: "total",
+                    records: "totalrecords"
+                },
+                width: 700,
+                height: 'auto', //200,
+                pager: '#pager',
+                sortorder: 'desc',
+                viewrecords: true,
+                caption: 'My first grid'
+            });
+        });
+    //]]>
+    </script>
+</head>
+<body>
+    <table id="list"><tr><td/></tr></table>
+    <div id="pager"></div>
+</body>
+</html> 
